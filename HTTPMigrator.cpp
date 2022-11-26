@@ -1,14 +1,14 @@
-#include "HTTPMigrator.h"
+#include "HttpMigrator.h"
 #include <curl/curl.h>
 
-HTTPMigrator::HTTPMigrator() {
+HttpMigrator::HttpMigrator() {
 }
 
-void HTTPMigrator::addDependency(string url, string filename) {
+void HttpMigrator::addDependency(string url, string filename) {
     urlToFilename[url] = filename;
 }
 
-void HTTPMigrator::migrate() {
+void HttpMigrator::migrate() {
     map<string, string>::iterator it = urlToFilename.begin();
     while (it != urlToFilename.end()) {
         makeRequestAndSaveResponse(it->first.c_str(), it->second.c_str());
@@ -16,7 +16,7 @@ void HTTPMigrator::migrate() {
     }
 }
 
-void HTTPMigrator::makeRequestAndSaveResponse(const char* url, const char* file_name) {
+void HttpMigrator::makeRequestAndSaveResponse(const char* url, const char* file_name) {
     CURL* easyhandle = curl_easy_init();
     curl_easy_setopt(easyhandle, CURLOPT_URL, url);
     FILE* file;
@@ -27,7 +27,7 @@ void HTTPMigrator::makeRequestAndSaveResponse(const char* url, const char* file_
     fclose(file);
 }
 
-HTTPMigrator::~HTTPMigrator() {
+HttpMigrator::~HttpMigrator() {
     map<string, string>::iterator it = urlToFilename.begin();
     while (it != urlToFilename.end()) {
         std::remove(it->second.c_str());

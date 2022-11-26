@@ -4,13 +4,13 @@
 
 using namespace std;
 
-class HTTPMigrator {
+class HttpMigrator {
 private:
 	map<string, string> urlToFilename;
 	void makeRequestAndSaveResponse(const char* url, const char* file_name);
 public:
-	HTTPMigrator();
+	HttpMigrator();
 	void addDependency(string url, string filename);
 	void migrate();
-	~HTTPMigrator();
+	~HttpMigrator();
 };
