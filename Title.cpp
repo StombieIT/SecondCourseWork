@@ -23,3 +23,7 @@ bool Title::includes(string keyword) {
 	std::transform(keyword.begin(), keyword.end(), keyword.begin(), ::toupper);
 	return std::find(keywords.begin(), keywords.end(), keyword) != keywords.end();
 }
+
+bool Title::operator==(const Title& description) const {
+	return textContent == description.textContent;
+}

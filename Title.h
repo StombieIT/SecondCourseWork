@@ -13,4 +13,5 @@ public:
 	Title();
 	Title(xml_node node);
 	bool includes(string keyword);
+	bool operator==(const Title& title) const;
 };

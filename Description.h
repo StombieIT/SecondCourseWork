@@ -1,10 +1,11 @@
 #pragma once
 #include "TextNode.h"
 
-class Description : TextNode
+class Description : public TextNode
 {
 public:
 	Description();
 	Description(xml_node node);
+	bool operator==(const Description& description) const;
 };
 

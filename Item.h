@@ -15,6 +15,18 @@ private:
 public:
 	Item(xml_node node);
 	Title getTitle() const;
-	Description getDescription();
-	Link getLink();
+	Description getDescription() const;
+	Link getLink() const;
+	bool operator==(const Item& item) const;
+	class Hasher
+	{
+	public:
+		size_t operator()(const Item& item) const
+		{
+			size_t titleHashCode = std::hash<string>()(item.getTitle().getTextContent());
+			size_t descriptionHashCode = std::hash<string>()(item.getDescription().getTextContent());
+			size_t linkHashCode = std::hash<string>()(item.getLink().getTextContent());
+			return titleHashCode ^ descriptionHashCode ^ linkHashCode;
+		}
+	};
 };

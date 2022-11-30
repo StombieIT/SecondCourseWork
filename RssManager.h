@@ -6,10 +6,10 @@
 
 class RssManager : public HttpMigrator {
 private:
-	vector<Item> uniqueItems;
+	unordered_set<Item, Item::Hasher> uniqueItems;
 public:
 	RssManager();
 	void refresh();
-	vector<Item> getItems();
-	vector<Item> getActualItems();
+	unordered_set<Item, Item::Hasher> getItems();
+	unordered_set<Item, Item::Hasher> getActualItems();
 };

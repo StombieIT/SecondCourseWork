@@ -11,21 +11,21 @@ void RssManager::refresh() {
 	while (it != urlToFilename.end()) {
 		xml_document document;
 		document.load_file(it->second.c_str());
-		for (xml_node item : document.child("rss").child("channel").children()) {
-			if ("item" == string(item.name())) {
-				uniqueItems.push_back(Item(item));
+		for (xml_node child : document.child("rss").child("channel").children()) {
+			if ("item" == string(child.name())) {
+				uniqueItems.insert(Item(child));
 			}
 		}
 		it++;
 	}
 }
 
-vector<Item> RssManager::getItems()
+unordered_set<Item, Item::Hasher> RssManager::getItems()
 {
 	return uniqueItems;
 }
 
-vector<Item> RssManager::getActualItems()
+unordered_set<Item, Item::Hasher> RssManager::getActualItems()
 {
 	refresh();
 	return uniqueItems;
