@@ -17,6 +17,7 @@ Title::Title(xml_node node) : TextNode::TextNode(node.child_value()) {
 			keyword = "";
 		}
 	}
+	keywords.push_back(keyword);
 }
 
 bool Title::includes(string keyword) {

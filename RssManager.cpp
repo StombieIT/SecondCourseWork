@@ -1,5 +1,6 @@
 #include "RssManager.h"
 #include <iostream>
+#include <algorithm>
 
 RssManager::RssManager() {
 	refresh();
@@ -29,4 +30,15 @@ unordered_set<Item, Item::Hasher> RssManager::getActualItems()
 {
 	refresh();
 	return uniqueItems;
+}
+
+unordered_set<Item, Item::Hasher> RssManager::getItemsByKeyword(string tag)
+{
+	unordered_set<Item, Item::Hasher> itemsByKeyword;
+	for (Item item : getActualItems()) {
+		if (item.getTitle().includes(tag)) {
+			itemsByKeyword.insert(item);
+		}
+	}
+	return itemsByKeyword;
 }

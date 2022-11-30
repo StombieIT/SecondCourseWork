@@ -12,4 +12,5 @@ public:
 	void refresh();
 	unordered_set<Item, Item::Hasher> getItems();
 	unordered_set<Item, Item::Hasher> getActualItems();
+	unordered_set<Item, Item::Hasher> getItemsByKeyword(string tag);
 };
