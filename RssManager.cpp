@@ -7,14 +7,16 @@ RssManager::RssManager() {
 }
 
 void RssManager::refresh() {
-	migrate();
 	map<string, string>::iterator it = urlToFilename.begin();
 	while (it != urlToFilename.end()) {
+		string url = it->first;
+		string filename = it->second;
+		makeRequestAndSaveResponse(url, filename);
 		xml_document document;
-		document.load_file(it->second.c_str());
+		document.load_file(filename.c_str());
 		for (xml_node child : document.child("rss").child("channel").children()) {
 			if ("item" == string(child.name())) {
-				uniqueItems.insert(Item(child));
+				items.insert(Item(child));
 			}
 		}
 		it++;
@@ -23,13 +25,13 @@ void RssManager::refresh() {
 
 unordered_set<Item, Item::Hasher> RssManager::getItems()
 {
-	return uniqueItems;
+	return items;
 }
 
 unordered_set<Item, Item::Hasher> RssManager::getActualItems()
 {
 	refresh();
-	return uniqueItems;
+	return items;
 }
 
 unordered_set<Item, Item::Hasher> RssManager::getItemsByKeyword(string tag)
@@ -41,4 +43,16 @@ unordered_set<Item, Item::Hasher> RssManager::getItemsByKeyword(string tag)
 		}
 	}
 	return itemsByKeyword;
+}
+
+void RssManager::addDependency(string url, string filename) {
+	urlToFilename[url] = filename;
+}
+
+RssManager::~RssManager() {
+	map<string, string>::iterator it = urlToFilename.begin();
+	while (it != urlToFilename.end()) {
+		remove(it->second.c_str());
+		it++;
+	}
 }
