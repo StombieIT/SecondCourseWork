@@ -8,5 +8,17 @@
 			<url>https://www.theguardian.com/uk/rss</url>
 			<filename>theguardian.xml</filename>
 		</dependency>
+		<dependency>
+			<url>http://24smi.org/rss/</url>
+			<filename>smi24.xml</filename>
+		</dependency>
+		<dependency>
+			<url>http://netanyachess.com/dilbert/dilbertru.rss</url>
+			<filename>dilbert.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://ecology.md/ru/rss</url>
+			<filename>ecology.xml</filename>
+		</dependency>
 	</dependencies>
 </configuration>

@@ -10,18 +10,24 @@ RssManager::RssManager(Configuration& config) {
 
 void RssManager::refresh() {
 	map<string, string>::iterator it = urlToFilename.begin();
+	vector<thread> threads;
 	while (it != urlToFilename.end()) {
 		string url = it->first;
 		string filename = it->second;
-		makeRequestAndSaveResponse(url, filename);
-		xml_document document;
-		document.load_file(filename.c_str());
-		for (xml_node child : document.child("rss").child("channel").children()) {
-			if ("item" == string(child.name())) {
-				items.insert(Item(child));
+		threads.push_back(thread([this, url, filename]() {
+			makeRequestAndSaveResponse(url, filename);
+			xml_document document;
+			document.load_file(filename.c_str());
+			for (xml_node child : document.child("rss").child("channel").children()) {
+				if ("item" == string(child.name())) {
+					items.insert(Item(child));
+				}
 			}
-		}
+		}));
 		it++;
+	}
+	for (int i = 0; i < threads.size(); i++) {
+		threads[i].join();
 	}
 }
 
@@ -53,4 +59,10 @@ RssManager::~RssManager() {
 		remove(it->second.c_str());
 		it++;
 	}
+}
+
+void RssManager::addItem(Item item) {
+	itemsLock.lock();
+	items.insert(item);
+	itemsLock.unlock();
 }

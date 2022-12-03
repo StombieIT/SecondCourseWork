@@ -12,11 +12,11 @@ using namespace pugi;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "ru");
 	XmlConfiguration config("config.xml");
 	RssManager manager(config);
 	ofstream out("result.bin");
-	auto items = manager.getActualItems();
+	auto items = manager.getItemsByKeyword("Ukraine");
 	for (Item item : items) {
 		out << "--------------------------------------" << endl;
 		out << "Title: " << item.getTitle().getTextContent() << endl;

@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_set>
+#include <mutex>
 #include "Title.h"
 #include "HttpMigrator.h"
 #include "Item.h"
@@ -7,8 +8,10 @@
 
 class RssManager : public HttpMigrator {
 private:
+	mutex itemsLock;
 	map<string, string> urlToFilename;
 	unordered_set<Item, Item::Hasher> items;
+	void addItem(Item item);
 public:
 	RssManager(Configuration& config);
 	void refresh();
