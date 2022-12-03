@@ -1,0 +1,12 @@
+<configuration>
+	<dependencies>
+		<dependency>
+			<url>https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml</url>
+			<filename>times.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://www.theguardian.com/uk/rss</url>
+			<filename>theguardian.xml</filename>
+		</dependency>
+	</dependencies>
+</configuration>

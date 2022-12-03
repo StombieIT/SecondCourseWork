@@ -4,7 +4,8 @@
 #include <curl/curl.h>
 #include "Title.h"
 #include "RssManager.h"
-#include "InMemoryConfiguration.h"
+#include "XmlConfiguration.h"
+#include <fstream>
 
 using namespace std;
 using namespace pugi;
@@ -12,19 +13,15 @@ using namespace pugi;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	InMemoryConfiguration config = InMemoryConfigurationBuilder()
-		.addDependency("https://www.theguardian.com/uk/rss", "theguardian.xml")
-		.addDependency("https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", "times.xml")
-		.addDependency("https://lenta.ru/rss", "lenta.xml")
-		.build();
+	XmlConfiguration config("config.xml");
 	RssManager manager(config);
-	string inp;
-	cin >> inp;
+	ofstream out("result.bin");
 	auto items = manager.getActualItems();
 	for (Item item : items) {
-		cout << "--------------------------------------" << endl;
-		cout << "Title: " << item.getTitle().getTextContent() << endl;
-		cout << "Description: " << item.getDescription().getTextContent() << endl;
-		cout << "URL: " << item.getLink().getTextContent() << endl;
+		out << "--------------------------------------" << endl;
+		out << "Title: " << item.getTitle().getTextContent() << endl;
+		out << "Description: " << item.getDescription().getTextContent() << endl;
+		out << "URL: " << item.getLink().getTextContent() << endl;
 	}
+	out.close();
 }
