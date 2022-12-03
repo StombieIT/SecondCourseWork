@@ -4,8 +4,8 @@
 
 using namespace std;
 
-class HttpMigrator {
+class HttpRequester {
 public:
-	HttpMigrator();
+	HttpRequester();
 	void makeRequestAndSaveResponse(string url, string filename);
 };

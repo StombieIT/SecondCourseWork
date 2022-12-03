@@ -2,11 +2,11 @@
 #include <unordered_set>
 #include <mutex>
 #include "Title.h"
-#include "HttpMigrator.h"
+#include "HttpRequester.h"
 #include "Item.h"
 #include "Configuration.h"
 
-class RssManager : public HttpMigrator {
+class RssManager : public HttpRequester {
 private:
 	mutex itemsLock;
 	map<string, string> urlToFilename;

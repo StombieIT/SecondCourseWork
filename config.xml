@@ -20,5 +20,17 @@
 			<url>https://ecology.md/ru/rss</url>
 			<filename>ecology.xml</filename>
 		</dependency>
+		<dependency>
+			<url>https://feeds.a.dj.com/rss/RSSWorldNews.xml</url>
+			<filename>wallstreetjournal.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://www.huffpost.com/section/world-news/feed</url>
+			<filename>huffpost.xml</filename>
+		</dependency>
+		<dependency>
+			<url>http://rss.cnn.com/rss/edition.rss</url>
+			<filename>cnn.xml</filename>
+		</dependency>
 	</dependencies>
 </configuration>

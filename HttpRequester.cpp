@@ -1,10 +1,10 @@
-#include "HttpMigrator.h"
+#include "HttpRequester.h"
 #include <curl/curl.h>
 
-HttpMigrator::HttpMigrator() {
+HttpRequester::HttpRequester() {
 }
 
-void HttpMigrator::makeRequestAndSaveResponse(string url, string filename) {
+void HttpRequester::makeRequestAndSaveResponse(string url, string filename) {
     CURL* easyhandle = curl_easy_init();
     curl_easy_setopt(easyhandle, CURLOPT_URL, url.c_str());
     FILE* file;

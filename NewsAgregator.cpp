@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include "pugixml.hpp"
-#include "HttpMigrator.h"
 #include <curl/curl.h>
 #include "Title.h"
 #include "RssManager.h"
@@ -16,7 +15,7 @@ int main()
 	XmlConfiguration config("config.xml");
 	RssManager manager(config);
 	ofstream out("result.bin");
-	auto items = manager.getItemsByKeyword("Ukraine");
+	auto items = manager.getItemsByKeyword("russia");
 	for (Item item : items) {
 		out << "--------------------------------------" << endl;
 		out << "Title: " << item.getTitle().getTextContent() << endl;
