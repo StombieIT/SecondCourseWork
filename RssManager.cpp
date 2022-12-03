@@ -1,8 +1,10 @@
 #include "RssManager.h"
+#include "Configuration.h"
 #include <iostream>
 #include <algorithm>
 
-RssManager::RssManager() {
+RssManager::RssManager(Configuration& config) {
+	urlToFilename = config.getDependencies();
 	refresh();
 }
 
@@ -43,10 +45,6 @@ unordered_set<Item, Item::Hasher> RssManager::getItemsByKeyword(string tag)
 		}
 	}
 	return itemsByKeyword;
-}
-
-void RssManager::addDependency(string url, string filename) {
-	urlToFilename[url] = filename;
 }
 
 RssManager::~RssManager() {
