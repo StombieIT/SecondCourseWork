@@ -2,7 +2,7 @@
 #include "Configuration.h"
 
 class FileConfiguration : public Configuration {
-private:
+protected:
 	string filepath;
 public:
 	FileConfiguration(string filepath);
