@@ -17,6 +17,10 @@
 			<filename>dilbert.xml</filename>
 		</dependency>
 		<dependency>
+			<url>https://www.kommersant.ru/RSS/news.xml</url>
+			<filename>kommersant.xml</filename>
+		</dependency>
+		<dependency>
 			<url>https://ecology.md/ru/rss</url>
 			<filename>ecology.xml</filename>
 		</dependency>
