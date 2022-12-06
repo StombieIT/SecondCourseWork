@@ -13,18 +13,25 @@ using namespace pugi;
 int main()
 {
 	setlocale(LC_ALL, "ru");
-	setlocale(LC_CTYPE, "rus");
 	XmlConfiguration config("config.xml");
 	RssManager manager(config);
 	JsonFormatter formatter;
-	ofstream out("result.bin");
-	auto items = manager.getItems();
-	out << formatter.format(items) << endl;
-	for (Item item : items) {
-		cout << "--------------------------------------" << endl;
-		cout << "Title: " << item.getTitle().getTextContent() << endl;
-		cout << "Description: " << item.getDescription().getTextContent() << endl;
-		cout << "URL: " << item.getLink().getTextContent() << endl;
+	string inp;
+	while (true) {
+		cout << "Enter keyword: " << endl;
+		cin >> inp;
+		if (inp == "e") {
+			break;
+		}
+		auto items = manager.getItemsByKeyword(inp);
+		ofstream out("result.json");
+		out << formatter.format(items);
+		for (Item item : items) {
+			cout << "--------------------------------------" << endl;
+			cout << "Title: " << item.getTitle().getTextContent() << endl;
+			cout << "Description: " << item.getDescription().getTextContent() << endl;
+			cout << "URL: " << item.getLink().getTextContent() << endl;
+		}
+		out.close();
 	}
-	out.close();
 }
