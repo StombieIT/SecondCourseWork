@@ -8,6 +8,10 @@
 			<filename>result.csv</filename>
 			<format>csv</format>
 		</output>
+		<output>
+			<filename>result.log</filename>
+			<format>user</format>
+		</output>
 	</outputs>
 	<dependencies>
 		<dependency>
