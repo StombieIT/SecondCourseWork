@@ -6,7 +6,6 @@ Outputer::Outputer(Configuration& config, ostream& consoleStream)
 	: RssManager(config), consoleStream(consoleStream) {
 	for (pair<string, string> filenameToFormat : config.getOutputs()) {
 		if (filenameToFormat.second == "json") {
-			//JsonFormatter formatter;
 			Formatter* formatter = new JsonFormatter();
 			outputs.insert({ filenameToFormat.first, formatter });
 		}
