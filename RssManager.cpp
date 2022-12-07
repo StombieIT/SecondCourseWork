@@ -45,12 +45,18 @@ unordered_set<Item, Item::Hasher> RssManager::getActualItems()
 unordered_set<Item, Item::Hasher> RssManager::getItemsByKeyword(string tag)
 {
 	unordered_set<Item, Item::Hasher> itemsByKeyword;
-	for (Item item : getActualItems()) {
+	for (Item item : getItems()) {
 		if (item.getTitle().includes(tag)) {
 			itemsByKeyword.insert(item);
 		}
 	}
 	return itemsByKeyword;
+}
+
+unordered_set<Item, Item::Hasher> RssManager::getActualItemsByKeyword(string tag)
+{
+	refresh();
+	return getItemsByKeyword(tag);
 }
 
 RssManager::~RssManager() {

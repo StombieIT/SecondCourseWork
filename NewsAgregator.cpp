@@ -5,6 +5,7 @@
 #include "RssManager.h"
 #include "XmlConfiguration.h"
 #include "JsonFormatter.h"
+#include "Outputer.h"
 #include <fstream>
 
 using namespace std;
@@ -14,8 +15,7 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 	XmlConfiguration config("config.xml");
-	RssManager manager(config);
-	JsonFormatter formatter;
+	Outputer outputer(config, cout);
 	string inp;
 	while (true) {
 		cout << "Enter keyword: " << endl;
@@ -23,15 +23,6 @@ int main()
 		if (inp == "e") {
 			break;
 		}
-		auto items = manager.getItemsByKeyword(inp);
-		ofstream out("result.json");
-		out << formatter.format(items);
-		for (Item item : items) {
-			cout << "--------------------------------------" << endl;
-			cout << "Title: " << item.getTitle().getTextContent() << endl;
-			cout << "Description: " << item.getDescription().getTextContent() << endl;
-			cout << "URL: " << item.getLink().getTextContent() << endl;
-		}
-		out.close();
+		outputer.migrateByKeyword(inp);
 	}
 }

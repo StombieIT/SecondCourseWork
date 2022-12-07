@@ -17,17 +17,16 @@ string JsonFormatter::format(unordered_set<Item, Item::Hasher> items) {
 		itemsRepresentations.push_back(itemRepresentation);
 	}
 	string itemsFormatted = "[";
-	if (!itemsRepresentations.empty()) {
-		itemsFormatted.append("\n");
+	if (itemsRepresentations.empty()) {
+		itemsFormatted.append("]");
+		return itemsFormatted;
 	}
+	itemsFormatted.append("\n");
 	for (int i = 0; i < itemsRepresentations.size() - 1; i++) {
 		itemsFormatted.append(itemsRepresentations[i]);
 		itemsFormatted.append(",\n");
 	}
-	if (!itemsRepresentations.empty()) {
-		itemsFormatted.append(itemsRepresentations[itemsRepresentations.size() - 1]);
-		itemsFormatted.append("\n");
-	}
-	itemsFormatted.append("]");
+	itemsFormatted.append(itemsRepresentations[itemsRepresentations.size() - 1]);
+	itemsFormatted.append("\n]");
 	return itemsFormatted;
 }

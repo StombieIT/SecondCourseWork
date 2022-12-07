@@ -5,4 +5,5 @@ class XmlConfiguration : public FileConfiguration {
 public:
 	XmlConfiguration(string filepath);
 	map<string, string> getDependencies();
+	map<string, string> getOutputs();
 };

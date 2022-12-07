@@ -1,4 +1,10 @@
 <configuration>
+	<outputs>
+		<output>
+			<filename>result.json</filename>
+			<format>json</format>
+		</output>
+	</outputs>
 	<dependencies>
 		<dependency>
 			<url>https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml</url>

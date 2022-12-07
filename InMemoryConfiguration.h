@@ -8,11 +8,3 @@ public:
 	void addDependency(string url, string filename);
 	map<string, string> getDependencies();
 };
-
-class InMemoryConfigurationBuilder {
-private:
-	InMemoryConfiguration config;
-public:
-	InMemoryConfigurationBuilder addDependency(string url, string filename);
-	InMemoryConfiguration build();
-};
