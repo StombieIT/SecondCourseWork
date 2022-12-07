@@ -1,14 +1,21 @@
 #include "Outputer.h"
 #include "JsonFormatter.h"
+#include "CsvFormatter.h"
 #include <fstream>
 
 Outputer::Outputer(Configuration& config, ostream& consoleStream)
 	: RssManager(config), consoleStream(consoleStream) {
 	for (pair<string, string> filenameToFormat : config.getOutputs()) {
+		Formatter* formatter;
 		if (filenameToFormat.second == "json") {
-			Formatter* formatter = new JsonFormatter();
-			outputs.insert({ filenameToFormat.first, formatter });
+			formatter = new JsonFormatter();
+		} else if (filenameToFormat.second == "csv") {
+			formatter = new CsvFormatter();
 		}
+		else {
+			throw "Invalid format in configuration";
+		}
+		outputs.insert({ filenameToFormat.first, formatter });
 	}
 }
 

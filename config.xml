@@ -4,6 +4,10 @@
 			<filename>result.json</filename>
 			<format>json</format>
 		</output>
+		<output>
+			<filename>result.csv</filename>
+			<format>csv</format>
+		</output>
 	</outputs>
 	<dependencies>
 		<dependency>
