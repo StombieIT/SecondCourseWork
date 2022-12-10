@@ -7,8 +7,7 @@ string CsvFormatter::format(unordered_set<Item, Item::Hasher> items) {
 	itemsFormatted.append(FIELD_SEPARATOR);
 	itemsFormatted.append("description");
 	itemsFormatted.append(FIELD_SEPARATOR);
-	itemsFormatted.append("link");
-	itemsFormatted.append("\n");
+	itemsFormatted.append("link\n");
 	for (Item item : items) {
 		itemsFormatted.append(normalize(item.getTitle().getTextContent()));
 		itemsFormatted.append(FIELD_SEPARATOR);
