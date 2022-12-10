@@ -1,1 +1,1 @@
-# This is repository contains my second course work
+# This repository contains my second course work
