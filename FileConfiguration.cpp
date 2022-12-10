@@ -1,6 +1,8 @@
 #include "FileConfiguration.h"
 #include <fstream>
 
+using std::ifstream;
+
 FileConfiguration::FileConfiguration(string filepath) {
 	this->filepath = filepath;
 }

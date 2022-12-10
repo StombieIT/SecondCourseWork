@@ -4,6 +4,8 @@
 #include <map>
 #include "RssManager.h"
 
+using std::ostream;
+
 class Outputer : public RssManager {
 private:
 	ostream& consoleStream;

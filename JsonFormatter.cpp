@@ -2,8 +2,6 @@
 #include <functional>
 #include <numeric>
 
-using std::accumulate;
-
 string JsonFormatter::format(unordered_set<Item, Item::Hasher> items) {
 	vector<string> itemsRepresentations;
 	for (Item item : items) {

@@ -5,7 +5,7 @@
 #include "Link.h"
 #include <pugixml.hpp>
 
-using namespace pugi;
+using pugi::xml_node;
 
 class Item {
 private:

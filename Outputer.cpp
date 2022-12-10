@@ -4,6 +4,11 @@
 #include "UserFormatter.h"
 #include <fstream>
 
+using std::pair;
+using std::thread;
+using std::ofstream;
+using std::endl;
+
 Outputer::Outputer(Configuration& config, ostream& consoleStream)
 	: RssManager(config), consoleStream(consoleStream) {
 	for (pair<string, string> filenameToFormat : config.getOutputs()) {

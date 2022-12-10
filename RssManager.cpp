@@ -3,6 +3,9 @@
 #include <iostream>
 #include <algorithm>
 
+using std::thread;
+using pugi::xml_document;
+
 RssManager::RssManager(Configuration& config) {
 	urlToFilename = config.getDependencies();
 	refresh();

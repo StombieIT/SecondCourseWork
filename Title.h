@@ -3,7 +3,9 @@
 #include <vector>
 #include "TextNode.h"
 
-using namespace std;
+using std::string;
+using std::vector;
+using pugi::xml_node;
 
 class Title : public TextNode {
 private:

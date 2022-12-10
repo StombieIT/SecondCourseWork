@@ -6,6 +6,9 @@
 #include "Item.h"
 #include "Configuration.h"
 
+using std::mutex;
+using std::unordered_set;
+
 class RssManager : public HttpRequester {
 private:
 	mutex itemsLock;

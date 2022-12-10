@@ -2,7 +2,8 @@
 #include <map>
 #include <string>
 
-using namespace std;
+using std::string;
+using std::map;
 
 class Configuration {
 public:

@@ -1,7 +1,8 @@
 #include "XmlConfiguration.h"
 #include "pugixml.hpp"
 
-using namespace pugi;
+using pugi::xml_document;
+using pugi::xml_node;
 
 XmlConfiguration::XmlConfiguration(string filepath) : FileConfiguration(filepath) {
 }

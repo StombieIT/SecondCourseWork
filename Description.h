@@ -1,6 +1,8 @@
 #pragma once
 #include "TextNode.h"
 
+using pugi::xml_node;
+
 class Description : public TextNode
 {
 public:

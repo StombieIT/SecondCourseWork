@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 
-using namespace std;
+using std::string;
 
 class HttpRequester {
 public:

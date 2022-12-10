@@ -2,8 +2,7 @@
 #include <string>
 #include <pugixml.hpp>
 
-using namespace std;
-using namespace pugi;
+using std::string;
 
 class TextNode {
 protected:
