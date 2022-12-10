@@ -1,6 +1,7 @@
 #include "XmlConfiguration.h"
 #include "pugixml.hpp"
 
+using std::exception;
 using pugi::xml_document;
 using pugi::xml_node;
 
@@ -15,9 +16,12 @@ map<string, string> XmlConfiguration::getDependencies() {
 		if ("dependency" != string(node.name())) {
 			continue;
 		}
-		string url = node.child_value("url");
 		string filename = node.child_value("filename");
-		dependencies[url] = filename;
+		string url = node.child_value("url");
+		if (dependencies.find(filename) != dependencies.end()) {
+			throw exception(("Filename '" + filename + "' already is using").c_str());
+		}
+		dependencies[filename] = url;
 	}
 	return dependencies;
 }

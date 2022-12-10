@@ -7,16 +7,16 @@ using std::thread;
 using pugi::xml_document;
 
 RssManager::RssManager(Configuration& config) {
-	urlToFilename = config.getDependencies();
+	filenameToUrl = config.getDependencies();
 	refresh();
 }
 
 void RssManager::refresh() {
-	map<string, string>::iterator it = urlToFilename.begin();
+	map<string, string>::iterator it = filenameToUrl.begin();
 	vector<thread> threads;
-	while (it != urlToFilename.end()) {
-		string url = it->first;
-		string filename = it->second;
+	while (it != filenameToUrl.end()) {
+		string filename = it->first;
+		string url = it->second;
 		threads.push_back(thread([this, url, filename]() {
 			makeRequestAndSaveResponse(url, filename);
 			xml_document document;
@@ -63,9 +63,9 @@ unordered_set<Item, Item::Hasher> RssManager::getActualItemsByKeyword(string tag
 }
 
 RssManager::~RssManager() {
-	map<string, string>::iterator it = urlToFilename.begin();
-	while (it != urlToFilename.end()) {
-		remove(it->second.c_str());
+	map<string, string>::iterator it = filenameToUrl.begin();
+	while (it != filenameToUrl.end()) {
+		remove(it->first.c_str());
 		it++;
 	}
 }

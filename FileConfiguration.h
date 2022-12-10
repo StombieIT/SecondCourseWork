@@ -6,5 +6,4 @@ protected:
 	string filepath;
 public:
 	FileConfiguration(string filepath);
-	virtual map<string, string> getDependencies();
 };

@@ -27,10 +27,6 @@
 			<filename>smi24.xml</filename>
 		</dependency>
 		<dependency>
-			<url>http://netanyachess.com/dilbert/dilbertru.rss</url>
-			<filename>dilbert.xml</filename>
-		</dependency>
-		<dependency>
 			<url>https://www.kommersant.ru/RSS/news.xml</url>
 			<filename>kommersant.xml</filename>
 		</dependency>
@@ -49,6 +45,18 @@
 		<dependency>
 			<url>http://rss.cnn.com/rss/edition.rss</url>
 			<filename>cnn.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://www.buzzfeed.com/index.xml</url>
+			<filename>buzzfeed.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://www.rt.com/rss-feed/</url>
+			<filename>rt.xml</filename>
+		</dependency>
+		<dependency>
+			<url>https://www.cbsnews.com/latest/rss/world</url>
+			<filename>cbsnews.xml</filename>
 		</dependency>
 	</dependencies>
 </configuration>

@@ -1,15 +1,10 @@
 ﻿#include <iostream>
-#include "pugixml.hpp"
-#include <curl/curl.h>
-#include "Title.h"
-#include "RssManager.h"
 #include "XmlConfiguration.h"
-#include "JsonFormatter.h"
 #include "Outputer.h"
-#include <fstream>
 
-using namespace std;
-using namespace pugi;
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main()
 {
@@ -18,7 +13,7 @@ int main()
 	Outputer outputer(config, cout);
 	string inp;
 	while (true) {
-		cout << "Enter keyword: " << endl;
+		cout << "Enter keyword (or enter 'e' to exit program): " << endl;
 		cin >> inp;
 		if (inp == "e") {
 			break;

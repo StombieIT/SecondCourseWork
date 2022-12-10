@@ -1,7 +1,7 @@
 #include "InMemoryConfiguration.h"
 
-void InMemoryConfiguration::addDependency(string url, string filename) {
-	dependencies[url] = filename;
+void InMemoryConfiguration::addDependency(string filename, string url) {
+	dependencies[filename] = url;
 }
 
 void InMemoryConfiguration::addOutput(string filename, string format) {

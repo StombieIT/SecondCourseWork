@@ -12,7 +12,7 @@ using std::unordered_set;
 class RssManager : public HttpRequester {
 private:
 	mutex itemsLock;
-	map<string, string> urlToFilename;
+	map<string, string> filenameToUrl;
 	unordered_set<Item, Item::Hasher> items;
 	void addItem(Item item);
 public:

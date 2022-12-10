@@ -2,21 +2,12 @@
 #include <fstream>
 
 using std::ifstream;
+using std::exception;
 
 FileConfiguration::FileConfiguration(string filepath) {
 	this->filepath = filepath;
-}
-
-map<string, string> FileConfiguration::getDependencies() {
-	ifstream file(filepath);
-	map<string, string> dependencies;
-	while (file) {
-		string url;
-		getline(file, url);
-		string filename;
-		getline(file, filename);
-		dependencies[url] = filename;
+	ifstream in(filepath);
+	if (in.fail()) {
+		throw exception(("File '" + filepath + "' does not exist").c_str());
 	}
-	file.close();
-	return dependencies;
 }
