@@ -23,7 +23,7 @@ void RssManager::refresh() {
 			document.load_file(filename.c_str());
 			for (xml_node child : document.child("rss").child("channel").children()) {
 				if ("item" == string(child.name())) {
-					items.insert(Item(child));
+					addItem(Item(child));
 				}
 			}
 		}));
